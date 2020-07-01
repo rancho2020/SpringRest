@@ -36,16 +36,20 @@ public class MyRestController {
 		System.out.println("Controller DELETE");
 		billionairesService.deleteBillionaire(id);
 		return ResponseEntity.ok().body("User deleted successfully");
-
 	}
 
 	@PostMapping(path = "/save/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String save(@RequestBody Billionaires billionaires) {
 		System.out.println("Controller SAVE");
-
 		billionairesService.createBillionaires(billionaires);
 		return "User deleted successfully";
+	}
 
+	@PostMapping(path = "/update/", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String update(@RequestBody Billionaires billionaires) {
+		System.out.println("Controller UPDATE");
+		billionairesService.updateBillionaire(billionaires);
+		return "User deleted successfully";
 	}
 
 }

@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.rest.controller","com.rest.repository","com.rest.service","com.rest.config" })
+@ComponentScan(basePackages = { "com.rest.controller","com.rest.dao","com.rest.service","com.rest.config" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 }
