@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,76 +21,31 @@ import com.rest.service.BillionairesService;
 @RestController
 @RequestMapping("/rest")
 public class MyRestController {
-	
-	@Autowired(required=true)
+
+	@Autowired(required = true)
 	private BillionairesService billionairesService;
-	
-	
-	
 
-	//@Autowired
-	
-
-   // Handler method to produce text response
-	/*
-	 * @GetMapping(path = "/get/text", produces = MediaType.TEXT_PLAIN_VALUE) public
-	 * ResponseEntity<String> getText() { return ResponseEntity .ok()
-	 * .body("Spring MVC - REST Controller Hello World example."); }
-	 */
-	
-	public void setBillionairesService(BillionairesService billionairesService) {
-		this.billionairesService = billionairesService;
+	@GetMapping(path = "/get/allData", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Billionaires> getText() {
+		System.out.println("Controller getAll");
+		return billionairesService.listAll();
 	}
 
-	@GetMapping(path = "/get/text", produces = MediaType.TEXT_PLAIN_VALUE)
-	   public List<Billionaires> getText() {
-		return billionairesService.listAll();
-	   }
+	@DeleteMapping(path = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> delete(@PathVariable Long id) {
+		System.out.println("Controller DELETE");
+		billionairesService.deleteBillionaire(id);
+		return ResponseEntity.ok().body("User deleted successfully");
 
-   // Handler method to produce JSON response
-   @GetMapping(path = "/get/json", produces = MediaType.APPLICATION_JSON_VALUE)
-   public ResponseEntity<List<String>> getJSON() {
-      List<String> list = new ArrayList<>();
-      list.add("One");
-      list.add("Two");
-      list.add("Three");
-      return ResponseEntity
-            .ok()
-            .cacheControl(CacheControl.noCache())
-            .body(list);
-   }
+	}
 
-   // Handler method to produce XML response
-   @GetMapping(path = "/get/xml", produces = MediaType.APPLICATION_XML_VALUE)
-   public ResponseEntity<String> getXML() {
-      String xml = "<user><id>12</id><name>John</name></user>";
-      return ResponseEntity
-            .ok()
-            .header("myheader", "myvalue") // add custom headers
-            .body(xml);
-   }
+	@PostMapping(path = "/save/", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String save(@RequestBody Billionaires billionaires) {
+		System.out.println("Controller SAVE");
 
-   // Handler method to consume JSON request and produce text response
-   @PostMapping(path = "/post/json", consumes = MediaType.APPLICATION_JSON_VALUE, 
-         produces = MediaType.TEXT_PLAIN_VALUE)
-   public ResponseEntity<String> postJSON(@RequestBody List<String> body) {
-      System.out.println(body);
-      // Process request
-      //....
-      return ResponseEntity
-            .ok()
-            .body("Done");
-   }
+		billionairesService.createBillionaires(billionaires);
+		return "User deleted successfully";
 
-   // Handler method to consume XML request and produce text response
-   @PostMapping(path = "/post/xml", consumes = MediaType.APPLICATION_XML_VALUE, 
-         produces = MediaType.TEXT_PLAIN_VALUE)
-   public ResponseEntity<String> postJSON(@RequestBody String body) {
-      System.out.println(body);
-      // Process request
-      //....
-      return ResponseEntity
-            .ok()
-            .body("Done");
-   }
+	}
+
 }

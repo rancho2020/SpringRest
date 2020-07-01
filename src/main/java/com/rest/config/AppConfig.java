@@ -21,11 +21,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @ComponentScan({
-    "com.rest"
+    "com.rest.config"
 })
-@EnableJpaRepositories(basePackages = "com.rest.repository")
+//@EnableJpaRepositories(basePackages = "com.rest.repository")
 public class AppConfig {
 
 	@Autowired
@@ -35,7 +35,7 @@ public class AppConfig {
         super();
     }
 
-    @Bean
+   /* @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
@@ -48,21 +48,21 @@ public class AppConfig {
         //entityManagerFactoryBean.setJpaProperties(additionalProperties());
 
         return entityManagerFactoryBean;
-    }
+    }*/
 
     
 
     @Bean
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty("org.h2.Driver"));
-        dataSource.setUrl(env.getProperty("jdbc:h2:mem:db"));
-        dataSource.setUsername(env.getProperty("sa"));
-        dataSource.setPassword(env.getProperty(""));
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:h2:~/test");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
         return dataSource;
     }
 
-    @Bean
+   /* @Bean
     public PlatformTransactionManager transactionManager(final EntityManagerFactory emf) {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
@@ -72,5 +72,5 @@ public class AppConfig {
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
-    }
+    }*/
 }

@@ -6,39 +6,57 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rest.domain.Billionaires;
-import com.rest.repository.BillionairesRepository;
+import com.rest.repository.BillionairesDaoImpl;
 
 @Service
 public class BillionairesServiceImpl implements BillionairesService{
 	
 
 	
-	@Autowired(required=true)
-	private BillionairesRepository billionairesRepository;
 	
-	public void setBillionairesRepository(BillionairesRepository billionairesRepository) {
-		this.billionairesRepository = billionairesRepository;
-	}
+	@Autowired
+	private BillionairesDaoImpl billionairesDaoImpl;
 
-	public BillionairesRepository getBillionairesRepository() {
-		return billionairesRepository;
-	}
+	/*
+	 * public void setBillionairesRepository(BillionairesRepository
+	 * billionairesRepository) { this.billionairesRepository =
+	 * billionairesRepository; }
+	 */
 
-	public void save(Billionaires billionaires) {
-		billionairesRepository.save(billionaires);
-    }
+	/*
+	 * public BillionairesRepository getBillionairesRepository() { return
+	 * billionairesRepository; }
+	 */
+
+	/*
+	 * public void save(Billionaires billionaires) {
+	 * billionairesRepository.save(billionaires); }
+	 */
      
     public List<Billionaires> listAll() {
-        return (List<Billionaires>) billionairesRepository.findAll();
+       System.out.println("SEERVVICE listAll---");
+    	return (List<Billionaires>) billionairesDaoImpl.getBillionaires();
+    	//return list;
     }
      
-    public Billionaires get(Long id) {
-        return billionairesRepository.findById(id).get();
-    }
-     
-    public void delete(Long id) {
-    	billionairesRepository.deleteById(id);
-    }
+	/*
+	 * public Billionaires get(Long id) { return
+	 * 
+	 * billionairesRepository.findById(id).get(); }
+	 */
+	 
+	@Override
+	public int deleteBillionaire(Long bilionaireiD) {
+		System.out.println("SEERVVICE delete---");
+		  return billionairesDaoImpl.deleteBillionaire(bilionaireiD); 
+	}
+
+	@Override
+	public int createBillionaires(Billionaires billionaires) {
+		System.out.println("SEERVVICE SAVE---");
+		return billionairesDaoImpl.createBillionaires(billionaires);
+	}
+	 
 
 
 

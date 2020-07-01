@@ -18,8 +18,16 @@ public class Billionaires {
 	
 	private String lastName;
 	
-	private String email;
+	private String career;
 	
+	public String getCareer() {
+		return career;
+	}
+
+	public void setCareer(String career) {
+		this.career = career;
+	}
+
 	public Billionaires() {
 	}
 
@@ -47,12 +55,5 @@ public class Billionaires {
 		this.lastName = lastName;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 }
