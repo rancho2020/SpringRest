@@ -11,7 +11,7 @@ public interface BillionairesDao {
 
 	public int deleteBillionaire(Long bilionaireiD);
 
-	public boolean updateBillionaire(Billionaires billionaires);
+	public Billionaires updateBillionaire(Billionaires billionaires);
 
 	public int createBillionaires(Billionaires billionaires);
 }

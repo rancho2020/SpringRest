@@ -1,8 +1,9 @@
+/*
 package com.rest.dao;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+//import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class BillionairesDaoImpl implements BillionairesDao {
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
 
-	@PostConstruct
+	//@PostConstruct
 	private void postConstruct() {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
@@ -43,7 +44,7 @@ public class BillionairesDaoImpl implements BillionairesDao {
 		return deleted;
 	}
 
-	public boolean updateBillionaire(Billionaires billionaires) {
+	public Billionaires updateBillionaire(Billionaires billionaires) {
 		return jdbcTemplate.update("update billionaires set first_name = ?, last_name = ?, career  = ? where id = ?",
 				billionaires.getFirstName(), billionaires.getLastName(), billionaires.getCareer(),
 				billionaires.getId()) > 0;
@@ -55,4 +56,4 @@ public class BillionairesDaoImpl implements BillionairesDao {
 		return save;
 	}
 
-}
+}*/
