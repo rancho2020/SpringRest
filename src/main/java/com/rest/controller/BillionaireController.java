@@ -35,13 +35,14 @@ public class BillionaireController {
     @PostMapping(path = "/billionaire", produces = MediaType.APPLICATION_JSON_VALUE)
     public String save(@RequestBody Billionaires billionaires) {
         billionairesService.createBillionaires(billionaires);
-        return "User deleted successfully";
+        return "created";
     }
 
     @PutMapping(path = "/billionaire/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String update(@RequestBody Billionaires billionaires) {
+    public String update(@PathVariable long id, @RequestBody Billionaires billionaires) {
+        billionaires.setId(id);
         billionairesService.updateBillionaire(billionaires);
-        return "User deleted successfully";
+        return "updated";
     }
 
 }
