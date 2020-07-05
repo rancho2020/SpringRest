@@ -1,17 +1,18 @@
-package com.rest.config;
+package com.rest;
+
+import com.rest.config.AppConfig;
+import org.h2.server.web.WebServlet;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-import org.h2.server.web.WebServlet;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
 public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-   @Override
-   protected Class<?>[] getRootConfigClasses() {
-      return new Class[] {};
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[]{};
    }
 
    @Override
