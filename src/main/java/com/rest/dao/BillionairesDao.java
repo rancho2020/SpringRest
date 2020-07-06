@@ -7,9 +7,9 @@ import com.rest.domain.Billionaires;
 public interface BillionairesDao {
 	public List<Billionaires> getBillionaires();
 
-	public Billionaires getBillionaire(Long billionaireiD);
+	public Billionaires getBillionaire(Long bilionaireiD);
 
-	public int deleteBillionaire(Long bilionaireiD);
+	public int deleteBillionaire(Billionaires billionaire);
 
 	public Billionaires updateBillionaire(Billionaires billionaires);
 

@@ -20,13 +20,12 @@ public class BillionairesJPADao implements BillionairesDao {
     }
 
     @Override
-    public Billionaires getBillionaire(Long billionaireiD) {
-        return entityManager.find(Billionaires.class, new Billionaires(billionaireiD));
+    public Billionaires getBillionaire(Long bilionaireiD) {
+        return entityManager.find(Billionaires.class, bilionaireiD);
     }
 
     @Override
-    public int deleteBillionaire(Long bilionaireiD) {
-        Billionaires billionaire = new Billionaires(bilionaireiD);
+    public int deleteBillionaire(Billionaires billionaire) {
         billionaire = entityManager.merge(billionaire);
         entityManager.remove(billionaire);
         return 0;

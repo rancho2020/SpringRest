@@ -19,7 +19,8 @@ public class BillionairesServiceImpl implements BillionairesService {
 
 	@Override
 	public int deleteBillionaire(Long bilionaireiD) {
-		return billionairesJPADao.deleteBillionaire(bilionaireiD);
+		Billionaires billionaire = new Billionaires(bilionaireiD);
+		return billionairesJPADao.deleteBillionaire(billionaire);
 	}
 
 	@Override
@@ -30,6 +31,11 @@ public class BillionairesServiceImpl implements BillionairesService {
 	@Override
 	public Billionaires updateBillionaire(Billionaires billionaires) {
 		return billionairesJPADao.updateBillionaire(billionaires);
+	}
+
+	@Override
+	public Billionaires getBillionaire(Long bilionaireiD) {
+		return billionairesJPADao.getBillionaire(bilionaireiD);
 	}
 
 }

@@ -44,5 +44,10 @@ public class BillionaireController {
         billionairesService.updateBillionaire(billionaires);
         return "updated";
     }
+    
+    @GetMapping(path = "/billionaire/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Billionaires fetchBillionaire(@PathVariable long id) {
+        return billionairesService.getBillionaire(id);
+    }
 
 }

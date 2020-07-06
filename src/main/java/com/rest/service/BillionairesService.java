@@ -10,4 +10,5 @@ public interface BillionairesService {
 	public int deleteBillionaire(Long bilionaireiD);
 	public int createBillionaires(Billionaires billionaires);
 	public Billionaires updateBillionaire(Billionaires billionaires);
+	public Billionaires getBillionaire(Long bilionaireiD);
 }
