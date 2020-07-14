@@ -17,21 +17,16 @@ public class Billionaires implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "career")
-    private String career;
+    @Column(name = "company")
+    private String company;
+
+    @Column(name = "wealth")
+    private String wealth;
 
 
     public Billionaires(Long id) {
 
         this.id = id;
-    }
-
-    public String getCareer() {
-        return career;
-    }
-
-    public void setCareer(String career) {
-        this.career = career;
     }
 
     public Billionaires() {
@@ -61,5 +56,19 @@ public class Billionaires implements Serializable {
         this.lastName = lastName;
     }
 
+    public String getCompany() {
+        return company;
+    }
 
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getWealth() {
+        return wealth;
+    }
+
+    public void setWealth(String wealth) {
+        this.wealth = wealth;
+    }
 }
