@@ -18,6 +18,7 @@ public class InitDatabase implements InitializingBean {
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
 
+        statement.executeUpdate("DROP TABLE billionaires");
         statement.executeUpdate("CREATE TABLE billionaires (\n" +
                 "  id INT AUTO_INCREMENT  PRIMARY KEY,\n" +
                 "  first_name VARCHAR(250) NOT NULL,\n" +
@@ -25,7 +26,6 @@ public class InitDatabase implements InitializingBean {
                 "  company VARCHAR(250) DEFAULT NULL,\n" +
                 "  wealth VARCHAR(250) DEFAULT NULL\n"+
                 ")");
-
         statement.executeUpdate("INSERT INTO billionaires (first_name, last_name, company, wealth) VALUES\n" +
                 "  ('Mukesh', 'Ambani', 'Reliance','$64.4 B'),\n" +
                 "  ('Jeff', 'Bezos', 'Amazon','$166.3 B'),\n" +
